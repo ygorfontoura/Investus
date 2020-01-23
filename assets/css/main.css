@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel:400,900&display=swap');
+
+body{
+    font-family: 'Cinzel', serif !important;
+}
+.homeDiv01, .homeDiv02, .homeDiv03, .loginBackground{
+    width: 100vw;
+    height: 100vh;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+}
+.homeDiv01, .loginBackground{
+    background: url("../images/backgrounds/buildings_day.jpg") no-repeat center;
+}
+
+.homeDiv03{
+    background: url("../images/backgrounds/mobile.jpg") no-repeat center;
+}
+.loginAreaBgc{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.loginAreaBgc p{
+    text-shadow: black 1px 1px;
+}
+.loginArea, .joinArea{
+    background-color: #fff;
+}
+.loginDiv{
+    height: 70vh;
+}
+#loginInputs input, #joinInputs input{
+    border: none;
+    border-bottom: 1px solid black;
+}

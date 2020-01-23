@@ -1,0 +1,12 @@
+{
+    "en" : {
+        "home" : [
+            {"welcome" : "Welcome to InvestUs!"}
+        ]
+    },
+    "pt" : {
+        "home" : [
+            {"welcome" : "Bem-vindo ao InvestUs!"}
+        ]
+    }
+}
