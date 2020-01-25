@@ -1,5 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Cinzel:400,900&display=swap');
+/*-----------------------------------------------------------*/
+/*------------------------ IMPORTS --------------------------*/
+/*-----------------------------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap');
+
+/*-----------------------------------------------------------*/
+/*------------------------- GLOBAL --------------------------*/
+/*------------------------- SETTINGS ------------------------*/
+
+:root{
+    --mainColor: #1e1e2e;
+    --secondColor: #27293d;
+    --thirdColor: #2e1e2e;
+}
+.mainColor{
+    background-color: var(--mainColor);
+}
+.secondColor{
+    background-color: var(--secondColor);
+}
+.thirdColor{
+    background-color: var(--thirdColor);
+}
 body{
     font-family: 'Cinzel', serif !important;
 }
@@ -8,7 +30,7 @@ body{
     height: 100vh;
     background-attachment: fixed !important;
     background-size: cover !important;
-}
+} 
 .homeDiv01, .loginBackground{
     background: url("../images/backgrounds/buildings_day.jpg") no-repeat center;
 }
@@ -33,4 +55,33 @@ body{
 #loginInputs input, #joinInputs input{
     border: none;
     border-bottom: 1px solid black;
+}
+#menu a{
+    font-weight: 700;
+    text-decoration: none;
+    color: #242424;
+}
+#menu a:hover{
+    color: #555555;
+    border-bottom: 1px solid #555555;
+}
+#menudashboard{
+    border-radius: 25px;
+    background-color: var(--thirdColor);
+    height: calc(100vh - 3.25rem - 75px);
+}
+.dashboard{
+    background-color: var(--mainColor);
+    height: 100vh;
+}
+.avatar{
+    height: 75px !important;
+}
+.userpanel{
+    border-radius: 25px;
+    background-color: var(--secondColor);
+}
+.currentAvatar{
+    width: 120px;
+    border-radius: 50%;
 }

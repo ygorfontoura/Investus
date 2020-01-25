@@ -7,12 +7,16 @@
         if(isset($_SESSION['user_id']) && ($action === "login" || $action === "register")){
             header("Location:".ROOT);
         }
-        if(isset($_POST['create']) || $action === "logout") {
+        if(isset($_POST['login']) || $action === "logout") {
             $success = $users->{$action}($_POST);
             if($success) {
                 if($action === "register"){
                     header('Location:' .ROOT. "auth/login");
-                } else {
+                } 
+                elseif($action === "login") {
+                    header("Location:".ROOT."dashboard");
+                }
+                else {
                     header("Location:" .ROOT);
                 }
                 exit;
@@ -20,7 +24,4 @@
         }
     }
     include("view/".$action.".php");
-    
-    // require("view/register.php");
-    // require("view/login.php");
 ?>

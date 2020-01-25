@@ -2,7 +2,7 @@
     class Base{
         public $db;
         public function __construct() {
-            $this->db = new PDO('mysql:host=localhost;dbname=investus;charset=utf8mb4', 'root', '');
+            $this->db = new PDO('mysql:host='.DBHOST.';dbname='.DBNAME.';charset=utf8mb4', DBUSER, DBPWD);
         }
         public function sanitize($data) {
             foreach($data as $key=>$val) {
@@ -10,7 +10,7 @@
             }
             return $data;
         }
-        /*
+        
         public function validateUserAcess($data) {
             if(isset($_SESSION['user_id'])) {
                 return $_SESSION['user_id'];
@@ -31,6 +31,6 @@
             }
             return false;
         }
-        */
+        
     }
 ?>

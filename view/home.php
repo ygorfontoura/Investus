@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <nav>
+            <nav class="fixed-top" id="menu">
                 <?php include("assets/site/menu.php")?>
             </nav>
             <div class="row justify-content-center">
@@ -49,7 +49,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 homeDiv03 justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 homeDiv03">
+                </div>
             </div>
         </div>
     </body>

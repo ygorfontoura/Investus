@@ -14,16 +14,19 @@
                             <p class="mt-5 text-white">Whether you want to buy or sell stock, become a better investor, or stay tuned – you can do it all here.</p>
                         </div>
                         <div class="col-lg-6 loginArea p-5">
+                            <p class="font-weight-bold text-right fixed=top"><a class="text-dark text-decoration-none" href="<?=ROOT?>">X</a></p>
                             <p class="font-weight-bold">Log In</p>
                             <p>Become an investor. <a href="<?=ROOT?>auth/register">Join.</a></p>
-                            <div class="form-group" id="loginInputs">
-                                <input class="col-lg-12 input-lg mt-5" type="email" name="email" placeholder="email">
-                                <input class="col-lg-12 input-lg mt-4" type="password" name="pwd" placeholder="password">
-                                <input class="mt-4 input-lg" type="checkbox" name="keepLogin"> Keep me logged in
-                                <div class="mt-4">
-                                    <button type="submit">LOG IN</button>
+                            <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
+                                <div class="form-group" id="loginInputs">
+                                    <input class="col-lg-12 input-lg mt-5" type="email" name="email" placeholder="email">
+                                    <input class="col-lg-12 input-lg mt-4" type="password" name="pwd" placeholder="password">
+                                    <input class="mt-4 input-lg" type="checkbox" name="keepLogin"> Keep me logged in
+                                    <div class="mt-4">
+                                        <button type="submit" name="login">LOG IN</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                             <a class="mt-5" href="#">Forgot your username or password?</a>
                             <div class="mt-3">
                                 <p>By clicking Log In, I confirm that I have read and agree to the InvestUs <a href="#">Terms of Service</a> , <a href="#">Privacy Policy</a>, and to receive emails and updates.</p>

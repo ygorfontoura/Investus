@@ -1,9 +1,10 @@
 <?php
     session_start();
+    include("assets/php/config.php");
     
-    $controllers = ["auth", "home", "news", "aboutus", "api"];
+
+    $controllers = ["auth", "home", "news", "aboutus", "api", "dashboard"];
     $controller = "home";
-    define("ROOT", "/Investus/");
 
     $url_parts = explode("/", $_SERVER["REQUEST_URI"]);
     if(isset($url_parts[2]) && in_array($url_parts[2], $controllers)){
