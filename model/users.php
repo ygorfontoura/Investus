@@ -2,7 +2,17 @@
     require('base.php');
     require('accounts.php');
     class Users{
-        use Base, Accounts;
+        use Base;
+
+        public $first_name;
+        public $last_name;
+        public $email;
+        public $phone;
+        public $account;
+        public $address;
+        public $suite;
+        public $postal_code;
+        public $user_avatar;
 
         public function create($data){
             $data = $this->sanitize($data);
@@ -84,7 +94,14 @@
             );
             $query->execute([$id]);
             $data = $query->fetch(PDO::FETCH_ASSOC);
-            return $data;
+            $this->user_avatar = $data['user_avatar'];
+            $this->first_name = $data['first_name'];
+            $this->last_name = $data['last_name'];
+            $this->phone = $data['phone'];
+            $this->email = $data['email'];
+            $this->address = $data['address'];
+            $this->suite = $data['postal_code'];
+            return $this;
         }
 
         public function update($data){

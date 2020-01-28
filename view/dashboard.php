@@ -5,8 +5,8 @@
         <?php
             include_once("assets/site/meta.php");
             include_once("model/users.php");
-            $data = (new Users)->getUserData($_SESSION['user_id']);
-            $user_account = (new Users)->getAccount($_SESSION['user_id']);
+            $user->getUserData($_SESSION['user_id']);
+            $user_account = (new Accounts)->getAccount($_SESSION['user_id']);
             ?>
         <meta http-equiv="cache-control" content="no-cache">
         <title>Dashboard | <?=PROJECTNAME?></title>
@@ -22,7 +22,7 @@
                         <p class="h5 mr-3  text-dark"><?=$_SESSION['first_name']." ".$_SESSION['last_name'];?></p>
                         <div>
                             <img class="rounded-circle avatar" src="<?php 
-                            echo ROOT."public/users_avatar/".$data['user_avatar'];
+                            echo ROOT."public/users_avatar/".$user->user_avatar;
                             ?>" alt="user profile pic">
                         </div>
                     </div> 

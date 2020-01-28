@@ -9,7 +9,11 @@
     $date = strtotime($data['updatedAt']);
     $currentDate = date("U");
     $dateVerify = ($currentDate - $date <= 86400) ? "valid" : "update";
-    if($dateVerify == "update") $data = $stock->updateStocks(getStocks($avaible_stocks_arr));
+    if($dateVerify == "update") {
+        $data = $stock->updateStocks(getStocks($avaible_stocks_arr));
+        $data = $stock->fetchStocks();
+        $stocks = json_decode($data['stocks'], true);
+    }
     ?>
 <div class="row">
     <div class="col-md-8 userpanel p-3">

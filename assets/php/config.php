@@ -11,7 +11,7 @@
     define("APITOKEN", "pk_8a25f0355188420cbb82b582e3898ae8");
     define("CURRENCY", "https://api.exchangeratesapi.io/latest");
 
-    $avaible_stocks_arr = ['cur', 'altr', 'cpa', 'cor', 'ctt', 'fen', 'jmt', 'lit', 'mar', 'egl', 'phr', 'sem', 'son', 'nvg'];
+    $avaible_stocks_arr = ['fb', 'aapl', 'msft','cur', 'altr', 'cpa', 'cor', 'ctt', 'fen', 'jmt', 'lit', 'mar', 'phr', 'sem', 'son', 'nvg'];
     $currency_symbols = [
         'EUR' => '€',
         'CAD' => '$',
@@ -47,6 +47,4 @@
         'KRW' => '&#8361;',
         'MYR' => 'RM'
     ];
-
-    ##  unavaible $portuguese_stocks_arr = ['cur', 'altr', 'cpa', 'cor', 'ctt', 'fen', 'jmt', 'lit', 'mar', 'egl', 'phr', 'sem', 'son', 'nvg', 'bcp', 'slben', 'cfn', 'cdu', 'edp', 'edpr', 'eson', 'enxp', 'mlfmv', 'flexd', 'fcp', 'galp', 'glint', 'ibs', 'gpa', 'ipr', 'ina', 'lig','mcp', 'mrl', 'mlmr','mlm24', 'alnor', 'nos', 'nba', 'ore', 'alptr', 'mlrze', 'ram', 'red', 'rene', 'scb', 'sonc', 'soni', 'snc', 'sng', 'scp', 'tdsa', 'sct', 'vaf'];
 ?>
