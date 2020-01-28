@@ -3,14 +3,15 @@
 /*-----------------------------------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap');
 
 /*-----------------------------------------------------------*/
 /*------------------------- GLOBAL --------------------------*/
 /*------------------------- SETTINGS ------------------------*/
 
 :root{
-    --mainColor: #1e1e2e;
-    --secondColor: #27293d;
+    --mainColor: #eee;
+    --secondColor: #fff;
     --thirdColor: #2e1e2e;
 }
 .mainColor{
@@ -23,7 +24,8 @@
     background-color: var(--thirdColor);
 }
 body{
-    font-family: 'Cinzel', serif !important;
+    /* font-family: 'Cinzel', serif !important; */
+    font-family: 'Poppins', sans-serif;
 }
 .homeDiv01, .homeDiv02, .homeDiv03, .loginBackground{
     width: 100vw;
@@ -66,9 +68,7 @@ body{
     border-bottom: 1px solid #555555;
 }
 #menudashboard{
-    border-radius: 25px;
-    background-color: var(--thirdColor);
-    height: calc(100vh - 3.25rem - 75px);
+    text-transform: uppercase;
 }
 .dashboard{
     background-color: var(--mainColor);
@@ -78,10 +78,24 @@ body{
     height: 75px !important;
 }
 .userpanel{
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: var(--secondColor);
 }
 .currentAvatar{
     width: 120px;
     border-radius: 50%;
+}
+.spacer {
+    background-color: transparent;
+    margin: 0 1rem 0 1rem;
+}
+#liveMessage, #sendLiveMessage{
+    border-radius: 10px !important;
+    resize: none !important;
+}
+.positive{
+    color: #8AC94F !important;
+}
+.negative{
+    color: #C9514F !important;
 }

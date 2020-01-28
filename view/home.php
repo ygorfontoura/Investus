@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <?php include("assets/site/meta.php");?>
-        <title>InvestUs</title>
+        <title><?=PROJECTNAME?></title>
     </head>
     <body>
         <div class="container-fluid">

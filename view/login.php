@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <?php include("assets/site/meta.php");?>
-        <title>Log In | InvestUs</title>
+        <title>Log In | <?=PROJECTNAME?></title>
     </head>
     <body>
         <div class="container-fluid">
@@ -19,8 +19,8 @@
                             <p>Become an investor. <a href="<?=ROOT?>auth/register">Join.</a></p>
                             <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
                                 <div class="form-group" id="loginInputs">
-                                    <input class="col-lg-12 input-lg mt-5" type="email" name="email" placeholder="email">
-                                    <input class="col-lg-12 input-lg mt-4" type="password" name="pwd" placeholder="password">
+                                    <input class="col-lg-12 input-lg mt-5" type="email" name="email" placeholder="Email">
+                                    <input class="col-lg-12 input-lg mt-4" type="password" name="pwd" placeholder="Password">
                                     <input class="mt-4 input-lg" type="checkbox" name="keepLogin"> Keep me logged in
                                     <div class="mt-4">
                                         <button type="submit" name="login">LOG IN</button>

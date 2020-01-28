@@ -8,6 +8,14 @@
 <script src="https://kit.fontawesome.com/d722b21c7a.js" crossorigin="anonymous"></script>
 <style>
     .loginAreaBgc{
-        background-image:url("<?= getBackground("assets/images/backgrounds/backgrounds.json")?>")
+        background-image:url("<?= getBackground("assets/images/backgrounds/backgrounds.json", "login")?>")
+    }
+    .dashboardBgc{
+        background:  linear-gradient(
+                    rgba(0, 0, 0, 0.5), 
+                    rgba(0, 0, 0, 0.5)
+                    ), url("<?= getBackground("assets/images/backgrounds/backgrounds.json", "dashboard")?>");
+        background-attachment: fixed !important;
+        background-size: cover !important;
     }
 </style>

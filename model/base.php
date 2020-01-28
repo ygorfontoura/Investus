@@ -1,5 +1,5 @@
 <?php 
-    class Base{
+    trait Base{
         public $db;
         public function __construct() {
             $this->db = new PDO('mysql:host='.DBHOST.';dbname='.DBNAME.';charset=utf8mb4', DBUSER, DBPWD);

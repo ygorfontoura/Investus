@@ -1,8 +1,18 @@
 {
     "login" : [
         "plant.jpg",
-	"executive.jpg",
-	"happy_executive.jpg",
-	"pink_suit.jpg"
+		"executive.jpg",
+		"happy_executive.jpg",
+		"pink_suit.jpg"
+    ],
+    "dashboard" : [
+    	"garden.jpg",
+    	"marketing.jpg",
+    	"pencil.jpg",
+    	"pier.jpg",
+    	"stocks.jpg",
+    	"street.jpg",
+    	"wall.jpg",
+    	"white_suit.jpg"
     ]
 }

@@ -9,12 +9,13 @@
         }
         if(isset($_POST['login']) || $action === "logout") {
             $success = $users->{$action}($_POST);
+
             if($success) {
                 if($action === "register"){
                     header('Location:' .ROOT. "auth/login");
                 } 
                 elseif($action === "login") {
-                    header("Location:".ROOT."dashboard");
+                    header("Location:".ROOT."dashboard/analyses");
                 }
                 else {
                     header("Location:" .ROOT);

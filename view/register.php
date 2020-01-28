@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <?php include("assets/site/meta.php");?>
-        <title>Join | InvestUs</title>
+        <title>Join | <?=PROJECTNAME?></title>
     </head>
     <body>
         <div class="container-fluid">
@@ -20,11 +20,12 @@
                             <?php if(isset($success) && !$success) echo $success;?>
                             <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
                                 <div class="form-group" id="loginInputs">
-                                    <input class="col-lg-12 input-lg mt-5" type="text" name="fullname" placeholder="Your name" required minlength="2">
-                                    <input class="col-lg-12 input-lg mt-3" type="email" name="email" placeholder="Add an email" required>
-                                    <input class="col-lg-12 input-lg mt-3" type="password" name="pwd" placeholder="Choose a password" required minlegth="8" maxlength="1000" pattern="[A-Za-z-0-9]{8}" title="Password must be 8 characters">
-                                    <input class="col-lg-12 input-lg mt-3" type="password" name="rep_pwd" placeholder="Repeat password" required minlegth="8" maxlength="1000" pattern="[A-Za-z0-9]{8}" title="Password must be 8 characters">
-                                    <input class="col-lg-12 input-lg mt-3" type="text" name="phone" placeholder="Your phone" required>
+                                    <input class="col-lg-12 input-lg mt-5" type="text" name="first_name" placeholder="First name" required minlength="2">
+                                    <input class="col-lg-12 input-lg mt-2" type="text" name="last_name" placeholder="Last name" required minlength="2">
+                                    <input class="col-lg-12 input-lg mt-2" type="email" name="email" placeholder="Add an email" required>
+                                    <input class="col-lg-12 input-lg mt-2" type="password" name="pwd" placeholder="Choose a password" required minlegth="8" maxlength="1000" pattern="[A-Za-z-0-9]{8}" title="Password must be 8 characters">
+                                    <input class="col-lg-12 input-lg mt-2" type="password" name="rep_pwd" placeholder="Repeat password" required minlegth="8" maxlength="1000" pattern="[A-Za-z0-9]{8}" title="Password must be 8 characters">
+                                    <input class="col-lg-12 input-lg mt-2" type="text" name="phone" placeholder="Your phone" required>
                                     <div class="mt-4">
                                         <button type="submit" name="login">JOIN</button>
                                     </div>
