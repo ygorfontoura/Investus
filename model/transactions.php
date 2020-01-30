@@ -15,20 +15,21 @@
             VALUES
             (?, ?, ?, ?)
             ");
-            $query->execute([
+            $result = $query->execute([
                 $user_id,
                 $data['action'],
                 $data['amount'],
                 $data['buy_price']
             ]);
-            return true;
+            return $result;
         }
         
         public function getLogs($user_id){
             $query = $this->db->prepare(
                 "SELECT t.action, t.value, t.buy_price, t.createdAt
                 FROM transaction_log t
-                WHERE user_id = ?"
+                WHERE user_id = ?
+                ORDER BY createdAt DESC"
             );
             $query->execute([$user_id]);
             $logs =  [];
@@ -41,7 +42,6 @@
                 $newlog->createdAt = $entry['createdAt'];
                 array_push($logs, $newlog);
             }
-            // $this->action =
             return $logs; 
         }
     }

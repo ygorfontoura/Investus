@@ -1,7 +1,5 @@
 <?php ##$stocks = (!empty($stocks)) ? $stocks :  getStocks($avaible_stocks_arr); ?>
 <?php
-    include("model/stocks.php");
-
     $stock = new Stock;
     $data = $stock->fetchStocks();
     $stocks = json_decode($data['stocks'], true);
@@ -20,7 +18,7 @@
         <p class="h5">Real Time Data</p>
         <div>
             <table class="table text-dark">
-                <tr>
+                <tr class="font-weight-bold">
                     <th scope="col">NAME</th>
                     <th scope="col">SYMBOL</th>
                     <th scope="col">MARKET</th>
@@ -31,7 +29,7 @@
                 <?php
                     foreach($stocks as $stock){?>
                     <tr>
-                        <td scope="row"><a href="#"><?=(!array_key_exists('companyName', $stock)) ? "N/A" : $stock['companyName']?></a></td>    
+                        <td scope="row"><a href="<?=ROOT?>dashboard/stock/<?=strtolower($stock['symbol'])?>"><?=(!array_key_exists('companyName', $stock)) ? "N/A" : $stock['companyName']?></a></td>    
                         <td scope="row"><?=(!array_key_exists('symbol', $stock)) ? "N/A" : $stock['symbol']?></td>    
                         <td scope="row"><?=(!array_key_exists('primaryExchange', $stock)) ? "N/A" : $stock['primaryExchange'];?></td>    
                         <td scope="row"><?=(!array_key_exists('latestPrice', $stock)) ? "N/A" : $stock['latestPrice']?></td>    

@@ -52,7 +52,7 @@
             $data['action'] = 'Funds added';
             $data['buy_price'] = NULL;
             (new Transaction)->createLog($user_id, $data);
-            return $result;
+            return true;
         }
 
         public function removeData($user_id, $data){
