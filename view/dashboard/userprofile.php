@@ -52,7 +52,7 @@
                                 <label>Postal Code:</label>
                             </div>
                             <div class="col-md-4">
-                                <input class="col-lg-12 input-lg mt-1 mb-2" type="text" name="postal_code" value="<?=(isset($user->postal_code)) ? $user->postal_code : "Suite"?>" minlength="4">
+                                <input class="col-lg-12 input-lg mt-1 mb-2" type="text" name="postal_code" value="<?=(isset($user->postal_code)) ? $user->postal_code : "Postal code"?>" minlength="4">
                             </div>
                         </div>
                         <div>

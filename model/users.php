@@ -1,20 +1,22 @@
 <?php
     require('base.php');
     require('accounts.php');
-    class Users{
+    class User{
         use Base;
-
+        
+        public $user_id;
         public $first_name;
         public $last_name;
-        public $email;
         public $phone;
-        public $account;
-        public $address;
+        public $email;
         public $suite;
+        public $address;
         public $postal_code;
         public $user_avatar;
 
+
         public function create($data){
+
             $data = $this->sanitize($data);
             if(
                 !empty($data['first_name']) &&
@@ -27,6 +29,7 @@
                 mb_strlen($data['pwd']) >= 8 &&
                 mb_strlen($data['pwd']) <= 10000
                 ){
+
                     $query = $this->db->prepare(
                     "INSERT INTO users
                      (first_name, last_name, email, phone, pwd, active, api_key)
@@ -43,7 +46,7 @@
                      bin2hex(random_bytes(32))
                  ]);
                  $user_id = $this->db->lastInsertId();
-                 $this->createAccount($user_id);
+                 (new Account())->createAccount($user_id);
                  return $result;
              } else {
                  return false;
@@ -100,7 +103,8 @@
             $this->phone = $data['phone'];
             $this->email = $data['email'];
             $this->address = $data['address'];
-            $this->suite = $data['postal_code'];
+            $this->suite = $data['suite'];
+            $this->postal_code = $data['postal_code'];
             return $this;
         }
 
@@ -153,9 +157,9 @@
                 $path = "..".ROOT."public/users_avatar/";
                 $final = $path.$name;
                 move_uploaded_file($origin, $final);
-                return $name;
+                return $this->user_avatar = $name;
             }
-            return $this->getUserData($_SESSION['user_id'])['user_avatar'];
+            return $this->getUserData($_SESSION['user_id'])->user_avatar;
         }
     }
 ?>

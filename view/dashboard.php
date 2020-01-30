@@ -1,3 +1,11 @@
+<?php 
+        ## space for debubing functions
+        ## example
+
+            ## echo $user_account->addFunds($_SESSION['user_id'], $_POST);
+            ## die();
+            
+?>
 <?php if(isset($_POST) && !empty($_POST) ){header('Location:'.$_SERVER['REQUEST_URI']);} ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -5,8 +13,9 @@
         <?php
             include_once("assets/site/meta.php");
             include_once("model/users.php");
+            $data = getCurrency(CURRENCY); $currencies = $data['rates']; $base = $data['base']; $date = $data['date'];
             $user->getUserData($_SESSION['user_id']);
-            $user_account = (new Accounts)->getAccount($_SESSION['user_id']);
+            $user_account = (new Account)->getAccount($_SESSION['user_id']);
             ?>
         <meta http-equiv="cache-control" content="no-cache">
         <title>Dashboard | <?=PROJECTNAME?></title>

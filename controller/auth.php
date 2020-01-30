@@ -1,6 +1,6 @@
 <?php
     require("model/users.php");
-    $users = new Users();
+    $user = new User();
     $actions = ["login", "register", "logout"];
     
     if(isset($action) && in_array($action, $actions)) {
@@ -8,7 +8,7 @@
             header("Location:".ROOT);
         }
         if(isset($_POST['login']) || $action === "logout") {
-            $success = $users->{$action}($_POST);
+            $success = $user->{$action}($_POST);
 
             if($success) {
                 if($action === "register"){

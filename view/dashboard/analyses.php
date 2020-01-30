@@ -16,7 +16,7 @@
     }
     ?>
 <div class="row">
-    <div class="col-md-8 userpanel p-3">
+    <div class="col-md-8 userpanel p-3 text-dark shadow p-3 mb-5 bg-white rounded">
         <p class="h5">Real Time Data</p>
         <div>
             <table class="table text-dark">

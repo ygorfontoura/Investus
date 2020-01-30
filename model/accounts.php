@@ -1,5 +1,6 @@
 <?php
-    class Accounts{
+    require("transactions.php");
+    class Account{
         use Base;
 
         public $iban;
@@ -41,29 +42,47 @@
 
         public function addFunds($user_id, $data){
             $currency = getCurrency(CURRENCY); $currencies = $currency['rates'];
-            $data = ($data['currency'] != 'EUR') ? $data['amount']/$currencies[$data['currency']] : $data['amount'];
+            $data['amount'] = ($data['currency'] != 'EUR') ? $data['amount']/$currencies[$data['currency']] : $data['amount'];
             $query = $this->db->prepare(
                 "UPDATE accounts
                 SET balance = balance+?
                 WHERE user_id = ?
             ");
-            $result = $query->execute([$data, $user_id]);
+            $result = $query->execute([$data['amount'], $user_id]);
+            $data['action'] = 'Funds added';
+            $data['buy_price'] = NULL;
+            (new Transaction)->createLog($user_id, $data);
             return $result;
         }
 
-        // public function removeData($user_id, $data){
-        //     $query = $this->db->prepare(
-        //         "DELETE $data
-        //         FROM accounts
-        //         WHERE user_id = ?"
-        //     );
-        //     $query->execute([$data['type'], $user_id]);
-        //     return true;
-        // }
+        public function removeData($user_id, $data){
+            if($data == "iban") {
+                $query = $this->db->prepare(
+                "UPDATE accounts
+                SET iban = ?
+                WHERE user_id = ?");
+                return $query->execute([NULL, $user_id]);
+            } elseif($data == "ccard"){
+                $query = $this->db->prepare(
+                    "UPDATE accounts
+                     SET ccard = ?,
+                        csc = ?,
+                        expiresM = ?,
+                        expiresY = ?
+                     WHERE user_id = ?");
+                return $query->execute([NULL, NULL, NULL, NULL, $user_id]);
+            } else { return false;}
+        }
 
         public function update($user_id, $data){
-            
             $data = $this->sanitize($data);
+            $current = $this->getAccount($user_id);
+            (empty($data['iban'])) ? $data['iban'] = $this->iban : $data['iban'];
+            (empty($data['ccard'])) ? $data['ccard'] = $this->ccard : $data['ccard'];
+            (empty($data['csc'])) ? $data['csc'] = $this->csc : $data['csc'];
+            (empty($data['expiresM'])) ? $data['expiresM'] = $this->expiresM : $data['expiresM'];
+            (empty($data['expiresY'])) ? $data['expiresY'] = $this->expiresY : $data['expiresY'];
+            (empty($data['currency'])) ? $data['currency'] = $this->currency : $data['currency'];
             $query = $this->db->prepare(
                 "UPDATE accounts
                 SET iban = ?,

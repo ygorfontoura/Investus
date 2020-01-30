@@ -1,5 +1,4 @@
 <?php 
-    $data = getCurrency(CURRENCY); $currencies = $data['rates']; $base = $data['base']; $date = $data['date'];
 ?>
 <div class="row">
     <div class="col-md-12 shadow p-3 mb-5 bg-white rounded text-dark text-left">
@@ -82,8 +81,8 @@
             <div class="text-center">
                 <button type="submit" name="update" class="mr-5">Save</button>
                 <button type="reset" name="reset" class="mr-5">Clear</button>
-                <button type="submit" name="deleteiban" class="mr-5">Remove IBAN</button>
-                <button type="submit" name="deletecc" class="mr-5">Remove CCard</button>
+                <button type="submit" name="delete" value="iban" class="mr-5">Remove IBAN</button>
+                <button type="submit" name="delete" value="ccard" class="mr-5">Remove CCard</button>
             </div>
         </form>
     </div>
