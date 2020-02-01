@@ -30,4 +30,17 @@
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         return json_decode(curl_exec($ch), true);
     }
+    ##$arr = array com valores das moedas, $currency = moeda do usuario, $value = valor a ser convertido
+    function convertCurrency($arr, $currency, $value){
+        if($currency != 'EUR'){
+            return $value * $arr[$currency];
+        } else { 
+            return $value;
+        }
+    }
+    ##$arr = array com valores das moedas, $value = valor a ser conertido
+    function usdToEur($arr, $value){
+        return $value / $arr['USD'];
+    }
 ?>
+

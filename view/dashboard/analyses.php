@@ -4,18 +4,17 @@
     $stock = new Stock;
     $data = $stock->fetchStocks();
     $stocks = json_decode($data['stocks'], true);
-
     
     $dateUpdate = strtotime($data['updatedAt']);
     $dateCreated = strtotime($data['createdAt']);
     $currentDate = date("U");
 
-    if($currentDate - $dateCreated >= 86400){
-        $data = $stock->createStocks(getStocks($avaible_stocks_arr));
+    if($currentDate - $dateCreated >= CREATE){
+        $data = $stock->createStocks(getStocks(STOCKARR));
         $data = $stock->fetchStocks();
         $stocks = json_decode($data['stocks'], true);
-    } elseif($currentDate - $dateUpdate >= 3600){ 
-        $data = $stock->updateStocks(getStocks($avaible_stocks_arr));
+    } elseif($currentDate - $dateUpdate >= UPDATE){ 
+        $data = $stock->updateStocks(getStocks(STOCKARR));
         $data = $stock->fetchStocks();
         $stocks = json_decode($data['stocks'], true);
     }
@@ -39,7 +38,11 @@
                         <td scope="row"><a href="<?=ROOT?>dashboard/stock/<?=$stock['symbol']?>"><?=(!array_key_exists('companyName', $stock)) ? "N/A" : $stock['companyName']?></a></td>    
                         <td scope="row"><?=(!array_key_exists('symbol', $stock)) ? "N/A" : $stock['symbol']?></td>    
                         <td scope="row"><?=(!array_key_exists('primaryExchange', $stock)) ? "N/A" : $stock['primaryExchange'];?></td>    
-                        <td scope="row"><?=(!array_key_exists('latestPrice', $stock)) ? "N/A" : $stock['latestPrice']?></td>    
+                        <td scope="row"><?php 
+                            if(!array_key_exists('latestPrice', $stock)){
+                                echo "N/A";}
+                            else { $price = $stock['latestPrice'] / $currencies['USD'];$convertedPrice = convertCurrency($currencies, $user_account->currency, $price); echo number_format($convertedPrice, 2, ".",",");}?><?php echo (!$user_account->currency) ? "€" : CURRENCYSYMBOL[$user_account->currency];?>
+                            </td>    
                         <td scope="row" class="<?= ($stock['changePercent']*100 > 0) ?  "positive" :  "negative"?>"><?=round($stock['changePercent']*100, 2, PHP_ROUND_HALF_EVEN)?>%</td>    
                         <td scope="row"><?=(!array_key_exists('latestTime', $stock)) ? "N/A": $stock['latestTime']?></td>   
                     </tr>

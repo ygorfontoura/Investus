@@ -10,9 +10,11 @@
     ## curl variables
     define("APITOKEN", "pk_8a25f0355188420cbb82b582e3898ae8");
     define("CURRENCY", "https://api.exchangeratesapi.io/latest");
+    define("UPDATE", 3600);
+    define("CREATE", 86400);
 
-    $avaible_stocks_arr = ['FB', 'AAPL', 'MSFT','JPM', 'GOOG', 'T', 'VZ', 'F', 'OKE', 'IRBT', 'LULU', 'NFLX', 'BBVA', 'VTI', 'VXUS', 'AMZN'];
-    $currency_symbols = [
+    define("STOCKARR", ['FB', 'AAPL', 'MSFT','JPM', 'GOOG', 'T', 'VZ', 'F', 'OKE', 'IRBT', 'LULU', 'NFLX', 'BBVA', 'VTI', 'VXUS', 'AMZN']);
+    define("CURRENCYSYMBOL", [
         'EUR' => '€',
         'CAD' => '$',
         'HKD' => '$',
@@ -46,5 +48,5 @@
         'GBP' => '£',
         'KRW' => '&#8361;',
         'MYR' => 'RM'
-    ];
+    ]);
 ?>

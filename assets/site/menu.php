@@ -1,6 +1,5 @@
 <ul class="d-flex justify-content-center">
     <li class="d-inline mr-3"><a href="<?=ROOT?>">Home</a></li>
-    <li class="d-inline mr-3"><a href="#">Trending Stocks</a></li>
     <?php
         if(!ISSET($_SESSION['user_id'])) {
             ?>

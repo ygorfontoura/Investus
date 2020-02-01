@@ -17,14 +17,14 @@
             <tr>
                 <td scope="row"><?= $userStock->companyName;?></td>
                 <td scope="row"><?= $userStock->symbol;?></td>
-                <td scope="row"><?= ($user_account->currency == 'EUR') ? number_format($userStock->buy_price / $currencies['USD'], 2, ".",",") : number_format($userStock->buy_price / $currencies['USD'] * $currencies[$user_account->currency], 2, ".",",");?>
+                <td scope="row"><?=number_format(convertCurrency($currencies, $user_account->currency, $user_account->balance), 2, ".",",");?>
                     <span>
-                    <?php echo (!$user_account->currency) ? "€" : $currency_symbols[$user_account->currency];?>
+                    <?php echo (!$user_account->currency) ? "€" : CURRENCYSYMBOL[$user_account->currency];?>
                     </span>
                 </td>
-                <td scope="row"><?= number_format($userStock->buy_price / $currencies['USD'] * $userStock->amount, 2, ".",",");?>
+                <td scope="row"><?= number_format(usdToEur($userStock->buy_price,$currencies['USD']) * $userStock->amount, 2, ".",",");?>
                     <span>
-                    <?php echo (!$user_account->currency) ? "€" : $currency_symbols[$user_account->currency];?>
+                    <?php echo (!$user_account->currency) ? "€" : CURRENCYSYMBOL[$user_account->currency];?>
                     </span>
                 </td>
                 <td scope="row"><?= $userStock->amount;?></td>
@@ -48,11 +48,9 @@
                     foreach($logs as $log){
                 ?>
             <tr>
-                <td scope="row"><?php 
-                                $value = ($user_account->currency != "EUR") ? number_format($log->value*$currencies[$user_account->currency], 2, ".",",") : number_format($log->value, 2, ".",","); echo $value;
-                                ?>
+                <td scope="row"><?=number_format(convertCurrency($currencies, $user_account->currency, $log->value), 2, ".",",");?>
                                 <span>
-                                <?php echo (!$user_account->currency) ? "€" : $currency_symbols[$user_account->currency];?>
+                                <?php echo (!$user_account->currency) ? "€" : CURRENCYSYMBOL[$user_account->currency];?>
                                 </span>
                 </td>
                 <td scope="row"><?=$log->action?></td>

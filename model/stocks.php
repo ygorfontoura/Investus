@@ -3,22 +3,22 @@
     class Stock{
         use Base;
 
-        public string $symbol;
-        public string $companyName;
-        public string $updatedAt;
-        public float $latestPrice;
-        public float $changePercent;
-        public float $buy_price;
-        public int $amount;
-        public string $boughtAt;
-        public string $primaryExchange;
+        public $symbol;
+        public $companyName;
+        public $updatedAt;
+        public $latestPrice;
+        public $changePercent;
+        public $buy_price;
+        public $amount;
+        public $boughtAt;
+        public $primaryExchange;
         public $open;
         public $close;
         public $high;
         public $low;
-        public float $previousClose;
-        public float $week52High;
-        public float $week52Low;
+        public $previousClose;
+        public $week52High;
+        public $week52Low;
         
         public function updateStocks($arr){
             $updateQuery = $this->db->prepare("SELECT id, stocks, updatedAt FROM stocks ORDER BY createdAt DESC LIMIT 1");
@@ -137,6 +137,21 @@
                 }
             }
             return $week;
+        }
+
+        function buyStock($user_id, $stock){
+            $query = $this->db->prepare(
+                "INSERT INTO users_stock
+                (user_id, symbol, buy_price, amount)
+                VALUES
+                (?, ?, ?, ?)
+            ");
+            $query->execute([
+                $user_id,
+                $stock['symbol'],
+                $stock['buy_price'],
+                $stock['amount'],
+            ]);
         }
     }
 ?>

@@ -17,7 +17,7 @@
             $success = $user->update($_POST);
         }
 
-        elseif(isset($_SESSION['user_id']) && isset($detail) && in_array($detail, $avaible_stocks_arr)){ 
+        elseif(isset($_SESSION['user_id']) && isset($detail) && in_array($detail, STOCKARR)){ 
             $success = $stock->getStock($detail);
         }
 

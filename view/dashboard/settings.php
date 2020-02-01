@@ -26,7 +26,7 @@
                                         ?>
                                     </span>
                                     <span>
-                                        <?php echo (!$user_account->currency) ? "€" : $currency_symbols[$user_account->currency];?>
+                                        <?php echo (!$user_account->currency) ? "€" : CURRENCYSYMBOL[$user_account->currency];?>
                                     </span>
                                 </p>
                             </div>
