@@ -1,6 +1,6 @@
 <div class="row ">
     <div class="col-md-12 shadow p-3 mb-5 bg-white rounded text-dark">
-        <p class="h5">My stocks</p>
+        <p class="h4">My stocks</p>
         <table class="table">
             <tr class="font-weight-bold">
                 <th scope="col">NAME</th>

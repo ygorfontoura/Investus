@@ -1,6 +1,6 @@
 <div class="row ">
     <div class="col-md-12 shadow p-3 mb-5 bg-white rounded text-dark">
-        <p class="h5">Stocks log</p>
+        <p class="h4">Stocks log</p>
         <table class="table">
             <tr class="font-weight-bold">
                 <th scope="col">NAME</th>
@@ -36,7 +36,7 @@
 </div>
 <div class="row">
     <div class="col-md-12 shadow p-3 mb-5 bg-white rounded text-dark">
-        <p class="h5">Funds log</p>
+        <p class="h4">Funds log</p>
         <table class="table">
             <tr>
                 <th scope="col">Value</th>

@@ -1,18 +1,25 @@
 <?php ##$stocks = (!empty($stocks)) ? $stocks :  getStocks($avaible_stocks_arr); ?>
 <?php
+    date_default_timezone_set('UTC');
     $stock = new Stock;
     $data = $stock->fetchStocks();
     $stocks = json_decode($data['stocks'], true);
 
-    $date = strtotime($data['updatedAt']);
+    
+    $dateUpdate = strtotime($data['updatedAt']);
+    $dateCreated = strtotime($data['createdAt']);
     $currentDate = date("U");
-    $dateVerify = ($currentDate - $date <= 86400) ? "valid" : "update";
-    if($dateVerify == "update") {
+
+    if($currentDate - $dateCreated >= 86400){
+        $data = $stock->createStocks(getStocks($avaible_stocks_arr));
+        $data = $stock->fetchStocks();
+        $stocks = json_decode($data['stocks'], true);
+    } elseif($currentDate - $dateUpdate >= 3600){ 
         $data = $stock->updateStocks(getStocks($avaible_stocks_arr));
         $data = $stock->fetchStocks();
         $stocks = json_decode($data['stocks'], true);
     }
-    ?>
+?>
 <div class="row">
     <div class="col-md-8 userpanel p-3 text-dark shadow p-3 mb-5 bg-white rounded">
         <p class="h5">Real Time Data</p>
@@ -29,7 +36,7 @@
                 <?php
                     foreach($stocks as $stock){?>
                     <tr>
-                        <td scope="row"><a href="<?=ROOT?>dashboard/stock/<?=strtolower($stock['symbol'])?>"><?=(!array_key_exists('companyName', $stock)) ? "N/A" : $stock['companyName']?></a></td>    
+                        <td scope="row"><a href="<?=ROOT?>dashboard/stock/<?=$stock['symbol']?>"><?=(!array_key_exists('companyName', $stock)) ? "N/A" : $stock['companyName']?></a></td>    
                         <td scope="row"><?=(!array_key_exists('symbol', $stock)) ? "N/A" : $stock['symbol']?></td>    
                         <td scope="row"><?=(!array_key_exists('primaryExchange', $stock)) ? "N/A" : $stock['primaryExchange'];?></td>    
                         <td scope="row"><?=(!array_key_exists('latestPrice', $stock)) ? "N/A" : $stock['latestPrice']?></td>    

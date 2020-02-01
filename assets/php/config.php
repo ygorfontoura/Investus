@@ -11,7 +11,7 @@
     define("APITOKEN", "pk_8a25f0355188420cbb82b582e3898ae8");
     define("CURRENCY", "https://api.exchangeratesapi.io/latest");
 
-    $avaible_stocks_arr = ['fb', 'aapl', 'msft','cur', 'altr', 'cpa', 'cor', 'ctt', 'fen', 'jmt', 'lit', 'mar', 'phr', 'sem', 'son', 'nvg'];
+    $avaible_stocks_arr = ['FB', 'AAPL', 'MSFT','JPM', 'GOOG', 'T', 'VZ', 'F', 'OKE', 'IRBT', 'LULU', 'NFLX', 'BBVA', 'VTI', 'VXUS', 'AMZN'];
     $currency_symbols = [
         'EUR' => '€',
         'CAD' => '$',
