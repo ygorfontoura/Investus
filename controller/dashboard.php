@@ -6,8 +6,8 @@
     $user = new User();
     $stock = new Stock();
     $account = $user->account = new Account();
-    $actions = ["analyses", "investments", "settings", "support", "transferlog", "userprofile"];
-    $details = ["update", "addCC", "addBank", "delete"];
+    $actions = ["analyses", "investments", "account", "support", "transferlog", "userprofile", "stock"];
+    $details = ["update", "addCC", "addBank", "delete", "buyStock", "sellStock", "getHistory", "withdraw"];
     
     
     if(isset($_SESSION['user_id']) && isset($_SESSION['api_key'])) {
@@ -21,7 +21,7 @@
             $success = $stock->getStock($detail);
         }
 
-        elseif($action == "settings" && isset($_POST['update'])){ 
+        elseif($action == "account" && isset($_POST['update'])){ 
             $account = $account->getAccount($_SESSION['user_id']);
             
             $success = $account->update($_SESSION['user_id'], $_POST);
@@ -36,10 +36,9 @@
             }
         }
 
-        elseif(isset($_POST['delete']) && $action == "settings") {
+        elseif(isset($_POST['delete']) && $action == "account") {
             $account->removeData($_SESSION['user_id'], $_POST['delete']);
-        }
-
+        }        
     } else {header("Location:".ROOT."auth/login");}
 
 

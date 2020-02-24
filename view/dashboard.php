@@ -28,12 +28,17 @@
     <body>
         <div class="container-fluid dashboard h-100">
             <div class="row">
-                <div class="col-md-2 dashboardBgc">
+                <div class="col-lg-2 col-md-1 dashboardBgc" id="lateralMenu">
                     <div class="justify-content-center text-center min-vh-100 sticky-top" id="menudashboard"><?php include("assets/site/menudashboard.php");?></div>
                 </div>
-                <div class="col-md-10">
+                <div class="col-lg-10 col-md-11">
                     <div class="d-flex justify-content-end p-2 align-items-center">
-                        <p class="h5 mr-3  text-dark"><?=$_SESSION['first_name']." ".$_SESSION['last_name'];?></p>
+                        <p class="h6 mr-3 text-dark"><a class="text-dark text-decoration-none" href="<?=ROOT?>dashboard/transferlog">
+                            <?php $value = ($user_account->currency != 'EUR') ?number_format($user_account->balance*$currencies[$user_account->currency], 2, ".",",") : number_format($user_account->balance, 2, ".",",");
+                                echo $value." "; echo (!$user_account->currency) ? "€" : CURRENCYSYMBOL[$user_account->currency];?>
+                        </a>
+                        </p>
+                        <p class="h5 mr-3 text-dark"><?=$_SESSION['first_name']." ".$_SESSION['last_name'];?></p>
                         <div>
                             <img class="rounded-circle avatar" src="<?php 
                             echo ROOT."public/users_avatar/".$user->user_avatar;
@@ -41,7 +46,7 @@
                         </div>
                     </div> 
                     <div class="row">
-                        <div class="col-md-12 justify-content-center text-center pl-1"><?php include("assets/site/userpanel.php");?></div>
+                        <div class="col-sm justify-content-center text-center pl-1"><?php include("assets/site/userpanel.php");?></div>
                     </div>
                 </div>
             </div>

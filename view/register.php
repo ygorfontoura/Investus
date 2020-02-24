@@ -14,7 +14,7 @@
                             <p class="mt-5 text-white">Whether you want to buy or sell stock, become a better investor, or stay tuned – you can do it all here.</p>
                         </div>
                         <div class="col-lg-6 loginArea p-5">
-                        <p class="font-weight-bold text-right fixed=top"><a class="text-dark text-decoration-none" href="<?=ROOT?>">X</a></p>
+                        <p class="font-weight-bold text-right fixed=top"><a class="text-dark text-decoration-none h3" href="<?=ROOT?>">&times;</a></p>
                             <p class="font-weight-bold">Join</p>
                             <p>Already an investor? <a href="<?=ROOT?>auth/login">Log In.</a></p>
                             <?php if(isset($success) && !$success) echo $success;?>
@@ -23,8 +23,8 @@
                                     <input class="col-lg-12 input-lg mt-5" type="text" name="first_name" placeholder="First name" required minlength="2">
                                     <input class="col-lg-12 input-lg mt-2" type="text" name="last_name" placeholder="Last name" required minlength="2">
                                     <input class="col-lg-12 input-lg mt-2" type="email" name="email" placeholder="Add an email" required>
-                                    <input class="col-lg-12 input-lg mt-2" type="password" name="pwd" placeholder="Choose a password" required minlegth="8" maxlength="1000" pattern="[A-Za-z-0-9]{8}" title="Password must be 8 characters">
-                                    <input class="col-lg-12 input-lg mt-2" type="password" name="rep_pwd" placeholder="Repeat password" required minlegth="8" maxlength="1000" pattern="[A-Za-z0-9]{8}" title="Password must be 8 characters">
+                                    <input class="col-lg-12 input-lg mt-2" type="password" name="pwd" placeholder="Choose a password" required minlegth="8" maxlength="1000" pattern="[A-Za-z-0-9]{8,1000}" title="Password must be 8 characters">
+                                    <input class="col-lg-12 input-lg mt-2" type="password" name="rep_pwd" placeholder="Repeat password" required minlegth="8" maxlength="1000" pattern="[A-Za-z0-9]{8,1000}" title="Password must be 8 characters">
                                     <input class="col-lg-12 input-lg mt-2" type="text" name="phone" placeholder="Your phone" required>
                                     <div class="mt-4">
                                         <button type="submit" name="login">JOIN</button>

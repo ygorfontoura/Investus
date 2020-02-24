@@ -10,10 +10,17 @@
     ## curl variables
     define("APITOKEN", "pk_8a25f0355188420cbb82b582e3898ae8");
     define("CURRENCY", "https://api.exchangeratesapi.io/latest");
-    define("UPDATE", 3600);
+    ## update and create fetch with stocks info, time in seconds
     define("CREATE", 86400);
-
-    define("STOCKARR", ['FB', 'AAPL', 'MSFT','JPM', 'GOOG', 'T', 'VZ', 'F', 'OKE', 'IRBT', 'LULU', 'NFLX', 'BBVA', 'VTI', 'VXUS', 'AMZN']);
+    define("UPDATE", 3600);
+    ## phpmailer settings
+    DEFINE('MAIL_SERVER', 'smtp.gmail.com');
+    DEFINE('MAIL_PORT', 587);
+    DEFINE('MAIL_USR', 'debugygor@gmail.com');
+    DEFINE('MAIL_PWD', 'uHGvgU9hYFYZJEK');
+    DEFINE('MAIL_SUBJECT', 'InvestUs | Password Reset');
+    ## stocks and currency values
+    define("STOCKARR", ['AAPL', 'AMZN', 'BBVA', 'F', 'FB', 'GOOG', 'IRBT', 'JPM', 'LULU', 'MSFT', 'NFLX', 'OKE', 'T', 'VZ', 'VTI', 'VXUS']);
     define("CURRENCYSYMBOL", [
         'EUR' => '€',
         'CAD' => '$',

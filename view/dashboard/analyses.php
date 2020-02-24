@@ -10,28 +10,30 @@
     $currentDate = date("U");
 
     if($currentDate - $dateCreated >= CREATE){
-        $data = $stock->createStocks(getStocks(STOCKARR));
+        $stock->createStocks(getStocks(STOCKARR));
         $data = $stock->fetchStocks();
         $stocks = json_decode($data['stocks'], true);
     } elseif($currentDate - $dateUpdate >= UPDATE){ 
-        $data = $stock->updateStocks(getStocks(STOCKARR));
+        $update = $stock->updateStocks(getStocks(STOCKARR));
         $data = $stock->fetchStocks();
         $stocks = json_decode($data['stocks'], true);
     }
 ?>
-<div class="row">
-    <div class="col-md-8 userpanel p-3 text-dark shadow p-3 mb-5 bg-white rounded">
+<div class="row  userpanel p-3 text-dark shadow p-3 mb-5 bg-white rounded">
+    <div class="col-lg">
         <p class="h5">Real Time Data</p>
         <div>
-            <table class="table text-dark">
-                <tr class="font-weight-bold">
-                    <th scope="col">NAME</th>
-                    <th scope="col">SYMBOL</th>
-                    <th scope="col">MARKET</th>
-                    <th scope="col">LAST</th>
-                    <th scope="col">%</th>
-                    <th scope="col">DATE / TIME</th>
-                </tr>
+            <table class="table text-dark hover display" id="analysesTable">
+                <thead>
+                    <tr class="font-weight-bold">
+                        <th scope="col">NAME</th>
+                        <th scope="col">SYMBOL</th>
+                        <th scope="col">MARKET</th>
+                        <th scope="col">LAST</th>
+                        <th scope="col">%</th>
+                        <th scope="col">DATE / TIME</th>
+                    </tr>
+                </thead>
                 <?php
                     foreach($stocks as $stock){?>
                     <tr>
@@ -50,9 +52,11 @@
             </table>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-lg">
         <div>
-            grafico xpto
+            <p class="h5">Top 5</p>
+            <canvas class="mb-5"id="topStocksCanvas" width="auto" height="auto" max-height="400px"></canvas>
+            <canvas id="topNegativeStocksCanvas" width="auto" height="auto" max-height="400px"></canvas>
         </div>
     </div>
 </div>

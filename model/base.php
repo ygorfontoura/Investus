@@ -10,28 +10,6 @@
                 $data[$key] = strip_tags(trim($val));
             }
             return $data;
-        }
-        
-        public function validateUserAcess($data) {
-            if(isset($_SESSION['user_id'])) {
-                return $_SESSION['user_id'];
-            }
-            elseif(isset($data['api_key'])) {
-                $query = $this->db->prepare("
-                    SELECT user_id
-                    FROM users
-                    WHERE api_key = ?
-                ");
-                $query->execute([
-                    $data['api_key']
-                ]);
-                $user = $query->fetch(PDO::FETCH_ASSOC);
-                if(!empty($user)) {
-                    return $user['user_id'];
-                }
-            }
-            return false;
-        }
-        
+        }        
     }
 ?>

@@ -41,14 +41,15 @@
         }
 
         public function addFunds($user_id, $data){
+            include_once("assets/php/functions.php");
             $currency = getCurrency(CURRENCY); $currencies = $currency['rates'];
-            $data['amount'] = ($data['currency'] != 'EUR') ? $data['amount']/$currencies[$data['currency']] : $data['amount'];
+            $data['value'] = ($data['currencyUsed'] != 'EUR') ? $data['value']/$currencies[$data['currencyUsed']] : $data['value'];
             $query = $this->db->prepare(
                 "UPDATE accounts
                 SET balance = balance+?
                 WHERE user_id = ?
             ");
-            $result = $query->execute([$data['amount'], $user_id]);
+            $result = $query->execute([$data['value'], $user_id]);
             $data['action'] = 'Funds added';
             $data['buy_price'] = NULL;
             (new Transaction)->createLog($user_id, $data);
@@ -105,5 +106,40 @@
             return $result;
         }
 
+        function withdraw($user_id, $data){
+            include_once("assets/php/functions.php");
+            $acc = self::getAccount($user_id);
+            $maxValue = $acc->balance;
+            $withdrawVal = $data['amount'];
+            $iban = $acc->iban;
+            if($withdrawVal > $maxValue) {
+                echo json_encode(array('success' => false, 'reason' => 400, "desc" => 'Invalid amount.')); 
+                return false;
+            };
+            if(!$iban) {
+                echo json_encode(array('success' => false, 'reason' => 403, "desc" => "Iban not registered."));
+                return false;
+            };
+            $currency = getCurrency(CURRENCY); $currencies = $currency['rates'];
+
+            $info['currencyUsed'] = $acc->currency;
+            $info['currencyValue'] = ($acc->currency == "EUR") ? 1 : $currencies[$acc->currency]; 
+            
+            $query = $this->db->prepare(
+                "UPDATE accounts
+                SET balance = balance-?
+                WHERE user_id = ?
+            ");
+            $query->execute([$withdrawVal, $user_id]);
+            
+            $info['value'] = ($acc->currency == "EUR") ? $data['amount'] : $data['amount']/$currencies[$acc->currency];
+            $info['buy_price'] = NULL;
+            $info['action'] = 'Withdraw';
+            $transaction = (new Transaction)->createLog($user_id, $info);
+            $msg = $withdrawVal." has been transfered to the current IBAN " .$iban;
+            $result = array('success' => true, 'amount' => $withdrawVal, 'iban' => $iban, "convertedValue" => $info['value'], "currencyUsed" => $info['currencyUsed']);
+            echo json_encode($result);
+            return true;
+        }
     }
 ?>
