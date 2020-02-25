@@ -6,7 +6,7 @@
     $user = new User();
     $stock = new Stock();
     $account = $user->account = new Account();
-    $actions = ["analyses", "investments", "account", "support", "transferlog", "userprofile", "stock"];
+    $actions = ["analyses", "investments", "account", "transferlog", "userprofile", "stock"];
     $details = ["update", "addCC", "addBank", "delete", "buyStock", "sellStock", "getHistory", "withdraw"];
     
     

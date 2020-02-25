@@ -111,7 +111,7 @@
         public function update($data){
             $data = $this->sanitize($data);
             if(!$_SESSION['user_id']) return false;
-            $user_avatar = $this->getFileAvatar($_FILES['userAvatar']);
+            $user_avatar = $this->getFileAvatar($_FILES['userAvatar']);;
             if(
                 !empty($data['first_name']) &&
                 !empty($data['last_name']) &&

@@ -11,6 +11,8 @@
 ## Requirements
     - PHP >=  7.4.1
     - PHPMailer
+    - Make sure the user Apache runs as has full write access to the folder you're trying to move the files to ({ROOT}/public/users_avatar)*
+    * Without write access user won't be able to update personal settings nor update a profile pic.
 
 ## Usage
     - Every url request is handled by its controller, and then calls a model.
@@ -19,9 +21,14 @@
         ..Investus/auth/login -> will load the auth controller, search for an avaible action and execute it, in this scenario it will load the Users model and execute the User::login(); // which set $_SESSION variables and return $user.
 
 ## DB update
-    - All transactions are automatic converted from user currency to EUR before inserted to database.
+    - All transactions are automatically converted from user currency to EUR before inserted to database.
     - All dates are saved as timestamp.
     - Stocks fetched by API Request are saved as JSON.
+    ## DUMMY defaults
+    - Passowrds:
+        12345678
+    - Forgoot Keys: 
+        {ROOT}/auth/forgot?forgot_key=cb4d553b57d30027ce3465bc67c8052f7f908e7eaa60821647761bd0909657a5
 
 ## Debugs
     - To debug a function the main controller must be used to show results.
