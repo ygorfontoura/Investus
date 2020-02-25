@@ -42,6 +42,7 @@
 
         public function addFunds($user_id, $data){
             include_once("assets/php/functions.php");
+            if($data['value'] >= 0) return false;
             $currency = getCurrency(CURRENCY); $currencies = $currency['rates'];
             $data['value'] = ($data['currencyUsed'] != 'EUR') ? $data['value']/$currencies[$data['currencyUsed']] : $data['value'];
             $query = $this->db->prepare(
@@ -111,8 +112,9 @@
             $acc = self::getAccount($user_id);
             $maxValue = $acc->balance;
             $withdrawVal = $data['amount'];
+
             $iban = $acc->iban;
-            if($withdrawVal > $maxValue) {
+            if($withdrawVal > $maxValue || $withdrawVal <= 0) {
                 echo json_encode(array('success' => false, 'reason' => 400, "desc" => 'Invalid amount.')); 
                 return false;
             };

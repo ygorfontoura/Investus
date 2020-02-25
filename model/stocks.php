@@ -163,6 +163,8 @@
         ## function to buy a stock, insert into users_stocks, transactions_log and update accounts
         function buyStock($user_id, $stock){
             include_once("assets/php/functions.php");
+            $amount = $stock['amount'];
+            if($amount <= 0) { echo json_encode(array("success" => false, "reason" => "Invalid amount.")); return false;}
 
             ##verify user account
             $acc = (new Account)->getAccount($user_id);
@@ -174,7 +176,6 @@
             $usd = $currencies['USD'];
             
             $symbol = $stock['symbol'];
-            $amount = $stock['amount'];
             $stock = self::getStock($symbol);
             $stockPrice = $stock->latestPrice / $usd;
             $totalPurchase = $stockPrice * $amount;
@@ -219,7 +220,7 @@
                 echo json_encode($result);
                 return true;
             } else {
-                $result = array("success" => false);
+                $result = array("success" => false, "reason" => "Insufficient funds.");
                 echo json_encode($result);
                 return false;
             }
@@ -242,6 +243,7 @@
             include_once("assets/php/functions.php");
             $sellAmount = $stock['amount'];
             $symbol = $stock['symbol'];
+            if($sellAmount <= 0) { echo json_encode(array("success" => false, "status" => 400, "reason" => "Invalid amount.")); return false;}
 
             ##get how many stocks is user able to sell
             $failMsg = array('success' => false, "reason" => "Not enough actions.");
@@ -310,9 +312,7 @@
                 echo json_encode($result);
                 return true;
             };
-            // echo "<pre>";
-            // print_r($stocksByUser);
-            ##user account details
+            
         }
     }
 ?>

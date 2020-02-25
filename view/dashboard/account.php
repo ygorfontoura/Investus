@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalWithdraw" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modalWithdraw" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content shadow p-3 mb-5 bg-white rounded justify-content-center">
             <div class="modal-header">

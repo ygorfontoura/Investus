@@ -29,8 +29,7 @@ $(document).ready(function(){
                      You bought ${response.amount} action(s) from ${response.symbol}, total ${total} ${response.user_currency}.   
                     `);
                 } else {
-                    $('#modalTitle').text('Payment declined');
-                    $('#modalMsg').text('Insufficient funds.');
+                    $('#modalMsg').text(response.reason);
                 };
             },
             error: function(err){
@@ -70,7 +69,10 @@ $(document).ready(function(){
                     $('#modalSellMsg').text(`
                      You sold ${response.amount} action(s) from ${response.symbol}, total ${total} ${response.currencyUsed}.
                     `);
-                } else {
+                } else if(response.status == 400){
+                    $('#modalSellMsg').text(response.reason);
+                } 
+                else {
                     $('#sellModalTitle').text(response.reason);
                     $('#modalSellMsg').text(`
                      We are so sorry, but you don't have enough actions to sell.
@@ -84,6 +86,7 @@ $(document).ready(function(){
     });
     $("#withdrawBtn").click(()=>{
         let quantity = Number($("#withdrawAmount").val());
+        if(quantity >= 0) return false;
         let request = {
             amount: quantity,
             withdraw: ""
