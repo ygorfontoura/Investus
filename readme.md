@@ -24,12 +24,13 @@
     - All transactions are automatically converted from user currency to EUR before inserted to database.
     - All dates are saved as timestamp.
     - Stocks fetched by API Request are saved as JSON.
-    ## DUMMY defaults
+
+## DUMMY defaults
     - Passowrds:
         12345678
     - Forgoot Keys: 
         {ROOT}/auth/forgot?forgot_key=cb4d553b57d30027ce3465bc67c8052f7f908e7eaa60821647761bd0909657a5
-
+        
 ## Debugs
     - To debug a function the main controller must be used to show results.
     Note -> project has been divided in 2 segments: Main and Children controller
