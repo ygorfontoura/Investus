@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-lg-4 userpanel p-3">
                         <label>Current avatar:<div class="overflow-hidden"><img class="currentAvatar mt-1 mb-2" src="<?=ROOT."public/users_avatar/".$user->user_avatar?>" alt="current user avatar"></div></label>
-                        <input type="file" class="mb-2" name="userAvatar">
+                        <input type="file" class="mb-2" name="userAvatar" accept="image/*">
                     </div>
                 </div>
             </div>
